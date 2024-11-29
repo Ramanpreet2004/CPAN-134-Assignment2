@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulating the DOM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        li:hover {
+            background-color: #72b356;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1> List Example of Dynamic</h1>
+    <ul id="dynamicList">
+        <li>This is a firs titem</li>
+        <li> This is a Second item</li>
+        <li> This is a third item</li>
+    </ul>
+
+    <script>
+        // Function to generate a random string of characters
+        function getRandomString(length = 10) {
+            const characters = 'ABCDEFGHIramanpreetJKLMNOPQRSTUVWXYZabdvfimoutapplecdefglovehijklmnopqrstuvwxyz0123456789!@#$%^&*(loveraman)';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        // Add a new <li> item when the page loads
+        window.onload = function () {
+            const ul = document.getElementById('dynamicList');
+            const newLi = document.createElement('li');
+            newLi.textContent = 'Fourth item';
+            ul.appendChild(newLi);
+
+            // Add click event listener to dynamically change text content of each <li>
+            ul.addEventListener('click', function (event) {
+                if (event.target.tagName === 'LI') {
+                    event.target.textContent = getRandomString();
+                }
+            });
+        };
+    </script>
+</body>
+</html>

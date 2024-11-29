@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .box {
+            width: 400px;
+            height: 200px;
+            padding: 40px;
+            border: 5px solid #ff8800;
+            margin: 20px auto;
+            background-color: #e0f7fa;
+            color: #333;
+            line-height: 160px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        .instructions {
+            margin: 20px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Box Model Demonstration</h1>
+    <p class="instructions">Click over the box to see the changes in the CSS box model.</p>
+    <div id="box" class="box">Click on this box</div>
+
+    <script>
+        const box = document.getElementById('box');
+
+        // Function to generate a random color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Change background color on click
+        box.addEventListener('click', () => {
+            box.style.backgroundColor = getRandomColor();
+            box.style.color = getRandomColor(); // Change text color too for better contrast
+        });
+
+        // Change border color on hover
+        box.addEventListener('mouseover', () => {
+            box.style.borderColor = getRandomColor();
+            box.style.boxShadow = `0 5px 15px ${getRandomColor()}`; // Update shadow color dynamically
+        });
+
+        // Reset border and shadow color when hover ends
+        box.addEventListener('mouseout', () => {
+            box.style.borderColor = '#007bff';
+            box.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+        });
+    </script>
+</body>
+</html>
